@@ -1,0 +1,15 @@
+
+FOL Parsing:
+
+parse_fol_formula = make_parser $ parse_formula (parse_infix_atom, parse_atom)
+
+    make_parse : monitors the current progress of tuple (expr, rest of token), if the token is
+        empty, parsing is done, unless errors are thrown midway.
+
+    parse_formula : parses remaining tokens.
+        It takes a tuple of 2 atom parsers: the 1st is responsible for parsing atoms that
+            has infixes (eg x=y, z<=2, etc); and the 2nd is for arbitrary atoms (eg propositions
+            P(x), P, isReal(x), and relations equiv(x,y) etc).
+        It also takes a list of bounded variables, and of course the input tokens.
+
+
